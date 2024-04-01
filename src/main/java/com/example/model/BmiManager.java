@@ -41,7 +41,7 @@ public class BmiManager {
 	}
 	
 	public double calc(double mHeight, double kgWeight) {
-		var bmiValue = Math.round(kgWeight / (mHeight * mHeight));
+		var bmiValue = kgWeight / (mHeight * mHeight);
 		var bmi = new Bmi(mHeight, kgWeight, bmiValue, LocalDateTime.now());
 		save(bmi);
 		return bmiValue;

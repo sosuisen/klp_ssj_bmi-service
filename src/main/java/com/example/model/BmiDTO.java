@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class BmiDTO {
-	private double cmHeight;
-	private double kgWeight;
-	private double bmi;
+	private String cmHeight;
+	private String kgWeight;
+	private String bmi;
 	private String date;
 }
