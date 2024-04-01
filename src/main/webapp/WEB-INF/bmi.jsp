@@ -11,8 +11,8 @@
 	<h1>身長と体重を入力してください</h1>
 	
 	<form action="./" method="post">
-	    身長：<input type="text" name="cmHeight" value="${cmHeight}"><br>
-		体重：<input type="text" name="kgWeight" value="${kgWeight}"><br>
+	    身長(cm)：<input type="text" name="cmHeight" value="${cmHeight}"><br>
+		体重(kg)：<input type="text" name="kgWeight" value="${kgWeight}"><br>
 		<button>計算</button><br
 	</form>
 	BMI：${bmi}
