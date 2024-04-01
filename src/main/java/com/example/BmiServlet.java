@@ -22,10 +22,12 @@ public class BmiServlet extends HttpServlet {
 		var bmiList = model.getBmiList();
 
 		// Modelから受け取ったデータをViewで表示しやすいよう加工するのは、Controllerの役割です。
-		// mをcmに変換して、順序を新しい順にします。
+		// mをcmに変換して、小数点以下は１桁までとして、順序を新しい順にします。	
 		List<BmiDTO> bmiDTOList = bmiList.stream().map(bmi -> 
-			new BmiDTO(bmi.getMHeight() * 100, bmi.getKgWeight(), bmi.getBmi())
-		).toList().reversed();
+			new BmiDTO(String.format("%.1f", bmi.getMHeight() * 100.0),
+				String.format("%.1f", bmi.getKgWeight()),
+				String.format("%.1f", bmi.getBmi()))
+			).toList().reversed();
 		
 		// データをViewに渡すため、リクエストスコープへセットします。
 		request.setAttribute("bmiDTOList", bmiDTOList);
@@ -45,7 +47,7 @@ public class BmiServlet extends HttpServlet {
 		var bmi = model.calc(mHeight, kgWeight);
 		
 		// 計算結果をリクエストスコープにセットします。
-		request.setAttribute("bmi", bmi);
+		request.setAttribute("bmi", String.format("%.1f", bmi));
 		// 受け取った値も引き続き表示するためリクエストスコープにセットします。
 		request.setAttribute("cmHeight", cmHeight);
 		request.setAttribute("kgWeight", kgWeight);
