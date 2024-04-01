@@ -1,5 +1,7 @@
 package com.example.model;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,4 +13,5 @@ public class Bmi {
 	private double mHeight;
 	private double kgWeight;
 	private double bmi;
+	private LocalDateTime createdDate;
 }

@@ -24,7 +24,7 @@ public class BmiServlet extends HttpServlet {
 		// Modelから受け取ったデータをViewで表示しやすいよう加工するのは、Controllerの役割です。
 		// mをcmに変換して、順序を新しい順にします。
 		List<BmiDTO> bmiDTOList = bmiList.stream().map(bmi -> 
-			new BmiDTO(bmi.getMHeight() * 100, bmi.getKgWeight(), bmi.getBmi())
+			new BmiDTO(bmi.getMHeight() * 100, bmi.getKgWeight(), bmi.getBmi(), bmi.getCreatedDate().toString().substring(0, 10))
 		).toList().reversed();
 		
 		// データをViewに渡すため、リクエストスコープへセットします。

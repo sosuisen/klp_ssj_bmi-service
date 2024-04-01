@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import jakarta.json.bind.Jsonb;
@@ -41,7 +42,7 @@ public class BmiManager {
 	
 	public double calc(double mHeight, double kgWeight) {
 		var bmiValue = Math.round(kgWeight / (mHeight * mHeight));
-		var bmi = new Bmi(mHeight, kgWeight, bmiValue);
+		var bmi = new Bmi(mHeight, kgWeight, bmiValue, LocalDateTime.now());
 		save(bmi);
 		return bmiValue;
 	}

@@ -9,4 +9,5 @@ public class BmiDTO {
 	private double cmHeight;
 	private double kgWeight;
 	private double bmi;
+	private String date;
 }
