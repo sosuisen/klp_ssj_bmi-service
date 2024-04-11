@@ -3,8 +3,8 @@ package com.example;
 import java.io.IOException;
 import java.util.List;
 
+import com.example.model.BmiDTO;
 import com.example.model.BmiManager;
-import com.example.model.BmiYardPoundDTO;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -26,8 +26,8 @@ public class BmiServlet extends HttpServlet {
 
 		// Modelから受け取ったデータをViewで表示しやすいよう加工するのは、Controllerの役割です。
 		// mをcmに変換して、順序を新しい順にします。
-		List<BmiYardPoundDTO> bmiDTOList = bmiList.stream().map(bmi -> 
-			new BmiYardPoundDTO(String.format("%.1f", bmi.getMHeight() * METER_FEET),
+		List<BmiDTO> bmiDTOList = bmiList.stream().map(bmi -> 
+			new BmiDTO(String.format("%.1f", bmi.getMHeight() * METER_FEET),
 					String.format("%.1f", bmi.getKgWeight() * KG_POUNDS),
 					String.format("%.1f", bmi.getBmi()),
 					bmi.getCreatedDate().toString().substring(0, 10))

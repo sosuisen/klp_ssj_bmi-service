@@ -19,7 +19,7 @@
 	<h2>計算履歴</h2>
 	<ul>
 	<c:forEach var="bmi" items="${bmiDTOList}">
-		<li>[${ bmi.date }] ${ bmi.feetHeight }feet, ${ bmi.poundsWeight }pound, BMI: ${ bmi.bmi }</li>
+		<li>[${ bmi.date }] ${ bmi.height }feet, ${ bmi.weight }pound, BMI: ${ bmi.bmi }</li>
 	</c:forEach>
 	</ul>
 </body>
