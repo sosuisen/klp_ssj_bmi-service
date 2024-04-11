@@ -11,15 +11,15 @@
 	<h1>身長と体重を入力してください</h1>
 	
 	<form action="./" method="post">
-	    身長(feet)：<input type="text" name="feetHeight" value="${feetHeight}"><br>
-		体重（pounds）：<input type="text" name="poundsWeight" value="${poundsWeight}"><br>
+	    身長(feet)：<input type="text" name="feetHeight" value="${current.height}"><br>
+		体重（pounds）：<input type="text" name="poundsWeight" value="${current.weight}"><br>
 		<button>計算</button><br
 	</form>
-	BMI：${bmi}
+	BMI：${current.bmi}
 	<h2>計算履歴</h2>
 	<ul>
-	<c:forEach var="bmi" items="${bmiDTOList}">
-		<li>[${ bmi.date }] ${ bmi.height }feet, ${ bmi.weight }pound, BMI: ${ bmi.bmi }</li>
+	<c:forEach var="bmi" items="${history}">
+		<li>[${ bmi.createdDate }] ${ bmi.height }feet, ${ bmi.weight }pound, BMI: ${ bmi.bmi }</li>
 	</c:forEach>
 	</ul>
 </body>
