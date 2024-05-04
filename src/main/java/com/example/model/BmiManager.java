@@ -19,7 +19,8 @@ public class BmiManager {
 	
 	public ArrayList<Bmi> getBmiList() {
 		try {
-			return jsonb.fromJson(Files.readString(Path.of(filePath)), new ArrayList<Bmi>(){}.getClass().getGenericSuperclass());
+			return jsonb.fromJson(Files.readString(Path.of(filePath)),
+					new ArrayList<Bmi>(){}.getClass().getGenericSuperclass());
 		} catch (NoSuchFileException e) {
 			System.out.println("File not found: " + filePath);
 		}
@@ -41,7 +42,7 @@ public class BmiManager {
 	}
 	
 	public double calc(double mHeight, double kgWeight) {
-		var bmiValue = Math.round(kgWeight / (mHeight * mHeight));
+		var bmiValue = kgWeight / (mHeight * mHeight);
 		var bmi = new Bmi(mHeight, kgWeight, bmiValue, LocalDateTime.now());
 		save(bmi);
 		return bmiValue;

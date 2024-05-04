@@ -35,14 +35,15 @@ public class BmiServlet extends HttpServlet {
 		var bmiList = model.getBmiList();
 
 		// Modelから受け取ったデータをViewで表示しやすいよう加工するのは、Controllerの役割です。
-		// mをcmに変換して、小数点以下は１桁までとして、順序を新しい順にします。	
+		// mをcmに変換して、小数点以下は１桁までとして、順序を新しい順にします。
+		
 		List<BmiDTO> history = bmiList.stream().map(bmi -> 
 			new BmiDTO(String.format("%.1f", bmi.getMHeight() * 100.0),
 				String.format("%.1f", bmi.getKgWeight()),
 				String.format("%.1f", bmi.getBmi()),
 				bmi.getCreatedDate().toString().substring(0, 10))
 			).toList().reversed();
-		
+
 		// データをViewに渡すため、リクエストスコープへセットします。
 		request.setAttribute("history", history);
 		request.getRequestDispatcher("/WEB-INF/bmi.jsp").forward(request, response);
@@ -61,9 +62,12 @@ public class BmiServlet extends HttpServlet {
 		var bmi = model.calc(mHeight, kgWeight);
 		
 		// 入力と計算結果を表示するため、リクエストスコープにセットします。
-		var current = new BmiDTO(String.valueOf(cmHeight), String.valueOf(kgWeight), String.format("%.1f", bmi), "");
+		var current = new BmiDTO(String.format("%.1f",cmHeight),
+				String.format("%.1f", kgWeight),
+				String.format("%.1f", bmi),
+				"");
 		request.setAttribute("current", current);
-		
+	
 		// この後の処理はdoGetメソッドと同じなので、doGetに任せます。
 		doGet(request, response);
 	}
